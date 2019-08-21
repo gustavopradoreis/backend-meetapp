@@ -6,7 +6,7 @@
   "author": "gustavopradoreis <henrique.gustavoreis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "serve": "nodemon src/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -1,0 +1,15 @@
+{
+  "name": "gostack-desafio-02",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gustavopradoreis/gostack-desafio-02.git",
+  "author": "gustavopradoreis <henrique.gustavoreis@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "sucrase": "^3.10.1"
+  }
+}

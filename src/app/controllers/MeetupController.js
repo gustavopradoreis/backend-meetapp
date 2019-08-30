@@ -4,7 +4,7 @@ import Meetup from '../models/Meetup';
 class MeetupController {
 	async store(req, res) {
 		const schema = Yup.object().shape({
-			file_id: Yup.number().required(),
+			banner_id: Yup.number().required(),
 			title: Yup.string().required(),
 			description: Yup.string().required(),
 			location: Yup.string().required(),
@@ -15,16 +15,25 @@ class MeetupController {
 			return res.status(400).json({ error: 'Validation fails!' });
 		}
 
-		const { file_id, title, description, location, date } = Meetup.create(
-			req.body
-		);
-
-		return res.json({
-			file_id,
+		const {
+			banner_id,
 			title,
 			description,
 			location,
 			date,
+			user_id,
+		} = await Meetup.create({
+			...req.body,
+			user_id: req.userId,
+		});
+
+		return res.json({
+			banner_id,
+			title,
+			description,
+			location,
+			date,
+			user_id,
 		});
 	}
 

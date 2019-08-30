@@ -1,6 +1,8 @@
+import * as Yup from 'yup';
+
 class MeetupController {
 	async store(req, res) {
-		return res.json({ ok: true });
+		return res.json({ ok: req.userId });
 	}
 
 	async update(req, res) {

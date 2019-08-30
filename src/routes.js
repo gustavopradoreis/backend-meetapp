@@ -19,11 +19,13 @@ routes.get('/', (req, res) => {
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
+// Guard above routes with middleware "auth"
 routes.use(authMiddleware);
-routes.post('/files', upload.single('file'), FileController.store);
 
 routes.post('/meetups', MeetupController.store);
 routes.put('/meetups', MeetupController.update);
 routes.delete('/meetups', MeetupController.delete);
+
+routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;

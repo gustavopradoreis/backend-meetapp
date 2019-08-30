@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class File extends Model {
+class Meetup extends Model {
 	static init(sequelize) {
 		super.init(
 			{
@@ -23,4 +23,4 @@ class File extends Model {
 	}
 }
 
-export default File;
+export default Meetup;

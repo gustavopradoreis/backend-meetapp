@@ -6,10 +6,12 @@
   "author": "gustavopradoreis <henrique.gustavoreis@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "serve": "nodemon src/server.js"
+		"serve": "nodemon src/server.js",
+		"queue": "nodemon src/queue.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bee-queue": "^1.2.2",
     "crypto": "^1.0.1",
     "date-fns": "^2.0.0-beta.5",
     "dotenv": "^8.1.0",

@@ -2,6 +2,7 @@ import { Op } from 'sequelize';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
 import Subscription from '../models/Subscription';
+import Mail from '../../lib/Mail';
 
 class SubscriptionController {
 	async index(req, res) {
@@ -27,6 +28,7 @@ class SubscriptionController {
 	}
 
 	async store(req, res) {
+		const user = await User.findByPk(req.userId);
 		const meetup = await Meetup.findByPk(req.params.meetupId, {
 			include: [
 				{
@@ -76,6 +78,17 @@ class SubscriptionController {
 		});
 
 		// Send mail
+		await Mail.sendMail({
+			to: `${meetup.user.name} <${meetup.user.email}>`,
+			subject: 'Nova inscrição no meetup!',
+			template: 'new-subscription',
+			context: {
+				host: meetup.user.name,
+        meetup: meetup.title,
+        user: user.name,
+        email: user.email,
+			},
+		});		
 
 		return res.json(subscription);
 	}
